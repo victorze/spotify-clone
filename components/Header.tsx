@@ -7,6 +7,7 @@ import { HiHome } from 'react-icons/hi';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 
+import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from './Button';
 
 interface HeaderProps {
@@ -15,6 +16,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ children, className }: HeaderProps) => {
+  const authModal = useAuthModal();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -55,14 +57,14 @@ export const Header = ({ children, className }: HeaderProps) => {
           <>
             <div>
               <Button
-                onClick={() => {}}
+                onClick={authModal.onOpen}
                 className="bg-transparent font-medium text-neutral-300"
               >
                 Sign up
               </Button>
             </div>
             <div>
-              <Button onClick={() => {}} className="bg-white px-6 py-2">
+              <Button onClick={authModal.onOpen} className="bg-white px-6 py-2">
                 Log in
               </Button>
             </div>
